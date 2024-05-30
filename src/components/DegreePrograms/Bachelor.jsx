@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import SmoothScroll from "smooth-scroll";
-
+import { Alert } from "bootstrap";
 const DegreeComponent = () => {
   const [degrees, setDegrees] = useState([]);
   const [searchInput, setSearchInput] = useState("");
