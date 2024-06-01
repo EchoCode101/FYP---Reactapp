@@ -37,9 +37,12 @@ const TeamMemberCard = ({ src, alt, memberName, title, briefBio }) => {
       <img
         src={src}
         alt={alt}
-        width="180"
-        height="180"
-        style={{ borderRadius: "50%" }}
+        style={{
+          borderRadius: "50%",
+          objectFit: "cover",
+          height: "180px",
+          width: "180px",
+        }}
       />
       <Bio>
         <Name>{memberName}</Name>

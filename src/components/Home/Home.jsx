@@ -1,44 +1,8 @@
-import { useEffect } from "react";
-import SmoothScroll from "smooth-scroll";
+import ScrollTopBtn from "../SmoothScroll";
+
 import { Link } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 const HomePage = () => {
-  useEffect(() => {
-    // Initialize SmoothScroll
-    // eslint-disable-next-line no-unused-vars
-    const scroll = new SmoothScroll('a[href*="#"]', {
-      speed: 800,
-      easing: "easeInOutCubic",
-    });
-
-    // Show/Hide Scroll to Top button based on scroll position
-    const scrollFunction = () => {
-      const btn = document.getElementById("myBtn");
-      if (btn) {
-        if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
-        ) {
-          btn.style.display = "block";
-        } else {
-          btn.style.display = "none";
-        }
-      }
-    };
-
-    window.addEventListener("scroll", scrollFunction);
-
-    return () => {
-      // Cleanup event listener
-      window.removeEventListener("scroll", scrollFunction);
-    };
-  }, []);
-
-  // Scroll to Top function
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
       <section id="about">
@@ -404,6 +368,97 @@ const HomePage = () => {
           <hr />
           <div className="row">
             <div className="col-md-6">
+              <h2>Degree Programs for Higher Education</h2>
+              <div className="about-content">
+                <p>
+                  Introducing our dynamic Degree Programs feature, a
+                  comprehensive tool designed to help you explore and find the
+                  perfect higher education degree. Our interface allows you to
+                  search, filter, and discover a wide range of degree programs
+                  tailored to your academic and career goals.
+                </p>
+                <h5>Key features:</h5>
+                <ol type="1">
+                  <li>
+                    Extensive Database: Access a diverse array of degree
+                    programs across various fields.
+                  </li>
+                  <li>
+                    Search Functionality: Easily find degree programs by
+                    entering keywords.
+                  </li>
+                  <li>
+                    Dynamic Filtering: Filter degree programs based on specific
+                    criteria to find the best match.
+                  </li>
+                  <li>
+                    Smooth Scrolling: Navigate effortlessly through the page
+                    with smooth scrolling.
+                  </li>
+                  <li>
+                    Interactive Dropdowns: Expand and contract dropdown menus
+                    for detailed information on each degree program.
+                  </li>
+                </ol>
+                <p>
+                  This feature enhances your ability to research and choose the
+                  right degree program, providing a valuable resource for
+                  prospective students. Whether you are looking for specific
+                  programs or exploring options in various fields, our Degree
+                  Programs feature offers the tools you need for thorough and
+                  efficient exploration.
+                </p>
+              </div>
+              <Link to="/programs" type="button" className="btn btn-primary">
+                Explore
+              </Link>
+            </div>
+            <div className="col-md-6">
+              <h2>Norby AI Chatbot</h2>
+              <div className="about-content">
+                <p>
+                  Introducing Norby AI Chatbot, your intelligent assistant
+                  designed to enhance user interactions and streamline
+                  communication. Norby AI integrates platform, provides a
+                  responsive, conversational experience for users.
+                </p>
+                <h5>Key features:</h5>
+                <ol type="1">
+                  <li>
+                    Natural Language Processing: Understands and responds to
+                    user inputs in a human-like manner.
+                  </li>
+                  <li>
+                    Customizable Responses: Tailor the chatbot&apos;s responses
+                    to fit your specific needs and use cases.
+                  </li>
+                  <li>
+                    24/7 Availability: Provides round-the-clock assistance,
+                    ensuring users always have support.
+                  </li>
+                  <li>
+                    Easy Integration: Simple to implement and compatible with
+                    various platforms and applications.
+                  </li>
+                  <li>
+                    Interactive UI: Engages users with a user-friendly and
+                    interactive interface.
+                  </li>
+                </ol>
+                <p>
+                  This feature significantly improves user engagement and
+                  satisfaction, offering a reliable resource for immediate
+                  assistance. Whether you&apos;re looking to automate customer
+                  support, provide instant answers, or engage users in
+                  meaningful conversations, Norby AI Chatbot offers the tools
+                  you need for effective and efficient communication.
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col-md-6">
               <h2>World Universities & Their Domains</h2>
               <div className="about-content">
                 <p>
@@ -464,58 +519,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* <section id="services">
-        <div className="container caption">
-          <h1>Our Services</h1>
-          <div className="row services">
-            <div className="col-md-3 text-center">
-              <div className="icon">
-                <i className="fa fa-desktop"></i>
-              </div>
-              <h3>International Universities Ranking</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Assumenda temporibus, repudiandae nemo dolorem molestiae, animi
-                nisi maxime eaque dolorum laboriosam a, voluptatum at ipsa
-                aperiam veniam deserunt error itaque obcaecati!
-              </p>
-            </div>
-            <div className="col-md-3 text-center">
-              <div className="icon">
-                <i className="fa fa-tablet"></i>
-              </div>
-              <h3>App Development</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam,
-              </p>
-            </div>
-            <div className="col-md-3 text-center">
-              <div className="icon">
-                <i className="fa fa-line-chart"></i>
-              </div>
-              <h3>Digital Markiting</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam,
-              </p>
-            </div>
-            <div className="col-md-3 text-center">
-              <div className="icon">
-                <i className="fa fa-paint-brush"></i>
-              </div>
-              <h3>Graphics Designing</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam,
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <section id="team">
         <div className="container">
           <h1>Our Team</h1>
@@ -523,7 +526,7 @@ const HomePage = () => {
             <div className="col-md-6 profile-pic text-center">
               <div className="img-box">
                 <img
-                  src="../../../hamza.JPG"
+                  src="../../../homePageImgs/hamza.JPG"
                   className="img-responsive"
                   height={180}
                   width={180}
@@ -560,8 +563,11 @@ const HomePage = () => {
             <div className="col-md-6 profile-pic text-center">
               <div className="img-box">
                 <img
-                  src="../../../homePageImgs/7.jp"
+                  src="../../../homePageImgs/talha.jpg"
                   className="img-responsive"
+                  height={180}
+                  width={180}
+                  style={{ objectFit: "cover", objectPosition: "top" }}
                 />
                 <ul>
                   <Link to="/">
@@ -593,7 +599,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       <section id="contact">
         <div className="container">
           <h1>Get In Touch</h1>
@@ -668,14 +673,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <button
-        onClick={scrollToTop}
-        id="myBtn"
-        title="Go to top"
-        style={{ display: "none" }}
-      >
-        <i className="fa-solid fa-arrow-up"></i>
-      </button>
+      <ScrollTopBtn />;
     </>
   );
 };

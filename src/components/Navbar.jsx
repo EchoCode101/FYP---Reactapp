@@ -31,7 +31,9 @@ const NavBar = () => {
                 objectFit: "contain",
               }}
             />
-            <Link className="navbar-brand">UniPursuit</Link>
+            <Link className="navbar-brand" to="/">
+              UniPursuit
+            </Link>
           </div>
           <button
             className="navbar-toggler"

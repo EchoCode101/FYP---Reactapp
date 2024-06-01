@@ -307,7 +307,6 @@ p {
   border-radius: 8px;
   max-width: 700px;
   margin: 0 auto;
-  
 }
 
 .dropdown-item:hover,
@@ -324,9 +323,8 @@ p {
   border-radius: 8px;
   text-wrap: wrap;
   cursor: text;
-
 }
-.dropdown-content-text{
+.dropdown-content-text {
   margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
   max-width: max-content;
@@ -341,6 +339,22 @@ p {
   user-select: none;
   text-wrap: wrap;
 }
-.input_programs{
+.input_programs {
   width: 700px;
 }
+/* --------------------Search Component --------------------*/
+.sort_fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+@media (max-width: 992px) {
+  .sort_fields {
+    max-width: -webkit-fill-available;
+    display: inline-block;
+  }
+}
+
+/* --------------------Search Component --------------------*/
+

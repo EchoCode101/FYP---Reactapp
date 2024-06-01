@@ -2,9 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import TeamMemberCard from "./TeamMember";
 import { Link } from "react-router-dom";
-import SmoothScroll from "smooth-scroll";
-import { useEffect } from "react";
-import propTypes from "prop-types";
+import ScrollTopBtn from "../SmoothScroll";
 const Section = styled.section`
   padding: 50px 20px;
   max-width: 1280px;
@@ -27,48 +25,9 @@ const Paragraph = styled.p`
   margin-bottom: 20px;
   line-height: 1.6;
 `;
-const AboutUs = ({ setProgress }) => {
-setProgress(30);
-  
-  useEffect(() => {
-    // Initialize SmoothScroll
-    // eslint-disable-next-line no-unused-vars
-    const scroll = new SmoothScroll('a[href*="#"]', {
-      speed: 800,
-      easing: "easeInOutCubic",
-    });
-
-    // Show/Hide Scroll to Top button based on scroll position
-    const scrollFunction = () => {
-      const btn = document.getElementById("myBtn");
-      if (btn) {
-        if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
-        ) {
-          btn.style.display = "block";
-        } else {
-          btn.style.display = "none";
-        }
-      }
-    };
-
-    window.addEventListener("scroll", scrollFunction);
-
-    return () => {
-      // Cleanup event listener
-      window.removeEventListener("scroll", scrollFunction);
-    };
-  }, []);
-
-  // Scroll to Top function
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+const AboutUs = () => {
   return (
     <Section>
-      {setProgress(20)}
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -82,7 +41,6 @@ setProgress(30);
           scholarships, and career paths.
         </Paragraph>
       </motion.div>
-      {setProgress(30)}
 
       <motion.div
         initial={{ x: -100, opacity: 0 }}
@@ -103,7 +61,6 @@ setProgress(30);
           and career paths.
         </Paragraph>
       </motion.div>
-      {setProgress(50)}
 
       <motion.div
         initial={{ x: 100, opacity: 0 }}
@@ -195,7 +152,6 @@ setProgress(30);
           </li>
         </ul>
       </motion.div>
-      {setProgress(60)}
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -203,23 +159,21 @@ setProgress(30);
         transition={{ duration: 1 }}
       >
         <SubHeading>Meet the Team</SubHeading>
-        {setProgress(70)}
         <TeamMemberCard
-          src="../hamza.JPG"
+          src="../../../homePageImgs/hamza.JPG"
           alt="Muhammad Hamza Sajjad"
           memberName="Muhammad Hamza Sajjad"
           title="CEO of this Project"
           briefBio="I am an undergraduate student of BSCS at GCUF, nearing the completion of my program. This application is my final year project. I live in Faisalabad, Punjab, and I am a quick learner. I learned to write React in just under 6 months, and I am eager to explore more exciting tools and technologies in the future!"
         />
         <TeamMemberCard
-          src="../talha.JPG"
+          src="../../../homePageImgs/talha.jpg"
           alt="Muhammad Talha Shahid"
           memberName="Muhammad Talha Shahid"
           title="Co-Founder of this Project"
           briefBio="I am an undergraduate student of BSCS at GCUF. Collaborating on this project has been a significant part of my academic journey. I am passionate about leveraging technology to provide educational support and resources to students."
         />
       </motion.div>
-      {setProgress(80)}
 
       <motion.div
         initial={{ x: -100, opacity: 0 }}
@@ -248,7 +202,6 @@ setProgress(30);
           its contribution to student empowerment and educational support.
         </Paragraph>
       </motion.div>
-      {setProgress(90)}
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -337,20 +290,9 @@ setProgress(30);
           </div>
         </div>
       </section>
-      <button
-        onClick={scrollToTop}
-        id="myBtn"
-        title="Go to top"
-        style={{ display: "none" }}
-      >
-        <i className="fa-solid fa-arrow-up"></i>
-      </button>
-      {setProgress(100)}
+      <ScrollTopBtn />
     </Section>
   );
 };
 
-AboutUs.propTypes = {
-  setProgress: propTypes.func,
-};
 export default AboutUs;

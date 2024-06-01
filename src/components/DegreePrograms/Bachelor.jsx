@@ -3,43 +3,15 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import SmoothScroll from "smooth-scroll";
-import { Alert } from "bootstrap";
+import ScrollTopBtn from "../SmoothScroll";
+
+import { Alert } from "react-bootstrap";
 const DegreeComponent = () => {
   const [degrees, setDegrees] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filteredDegrees, setFilteredDegrees] = useState([]);
+  // const [showWarning, setShowWarning] = useState(false);
   const [selectedDegree, setSelectedDegree] = useState(null);
-useEffect(() => {
-  // Initialize SmoothScroll
-  // eslint-disable-next-line no-unused-vars
-  const scroll = new SmoothScroll('a[href*="#"]', {
-    speed: 800,
-    easing: "easeInOutCubic",
-  });
-
-  // Show/Hide Scroll to Top button based on scroll position
-  const scrollFunction = () => {
-    const btn = document.getElementById("myBtn");
-    if (btn) {
-      if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-      ) {
-        btn.style.display = "block";
-      } else {
-        btn.style.display = "none";
-      }
-    }
-  };
-
-  window.addEventListener("scroll", scrollFunction);
-
-  return () => {
-    // Cleanup event listener
-    window.removeEventListener("scroll", scrollFunction);
-  };
-}, []);
 
   useEffect(() => {
     axios
@@ -67,6 +39,10 @@ useEffect(() => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //  if (searchInput.length < 2 || searchInput.length > 50) {
+    //    setShowWarning(true);
+    //    return;
+    //  }
     const filtered = degrees.filter((degree) =>
       degree.title.toLowerCase().includes(searchInput)
     );
@@ -75,13 +51,11 @@ useEffect(() => {
   const handleClear = () => {
     setSearchInput("");
   };
-    const scrollToTop = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+
   return (
     <>
       <div className="container mt-5">
-        <h1 className="mb-4">Degree Programs for Higher Education</h1>
+        <h1 className="mb-4">Degree Programs for Masters</h1>
         <div className="mb-3">
           <center>
             <form onSubmit={handleSubmit} className="d-flex input_programs">
@@ -110,6 +84,11 @@ useEffect(() => {
           </center>
         </div>
         {/* Dropdown menu for filtered degrees */}
+        {filteredDegrees.length === 0 && (
+          <Alert dismissible variant="info">
+            No results found.
+          </Alert>
+        )}
         {handleSubmit && (
           <div className="dropdown">
             {filteredDegrees.map((degree, index) => (
@@ -142,14 +121,7 @@ useEffect(() => {
           </div>
         )}
       </div>
-      <button
-        onClick={scrollToTop}
-        id="myBtn"
-        title="Go to top"
-        style={{ display: "none" }}
-      >
-        <i className="fa-solid fa-arrow-up"></i>
-      </button>
+      <ScrollTopBtn />;
     </>
   );
 };

@@ -7,6 +7,7 @@ import List from "./components/List/List";
 import Search from "./components/Search/Search";
 import Home from "./components/Home/Home";
 import ArticleLoader from "./components/Detailed Data/ArticleLoader";
+import ArticleLoaderForDetailedData from "./components/Detailed Data/ArticleLoaderForDetailedData";
 import SignUpForm from "./components/User/SignUpForm";
 import LoginForm from "./components/User/LoginForm";
 import WorldUniDomain from "./components/WorldUniDomains/WorldUniDomain";
@@ -34,7 +35,7 @@ const App = () => {
         <LoadingBar color="#f11946" progress={progress} height={3} />
         <Routes>
           <Route path="/" element={<Home />} />
-          
+
           <Route
             path="/signup"
             element={<SignUpForm setProgress={setProgress} />}
@@ -42,7 +43,8 @@ const App = () => {
           <Route
             path="/login"
             element={<LoginForm setProgress={setProgress} />}
-          /><Route
+          />
+          <Route
             path="/search"
             element={<Search setProgress={setProgress} />}
           />
@@ -53,6 +55,10 @@ const App = () => {
           <Route
             path="/all_universities/:id"
             element={<ArticleLoader setProgress={setProgress} />}
+          />
+          <Route
+            path="/detailedData/:id"
+            element={<ArticleLoaderForDetailedData setProgress={setProgress} />}
           />
           <Route
             path="/WorldsUnies_and_Domains"

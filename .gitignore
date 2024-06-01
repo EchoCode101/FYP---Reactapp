@@ -11,8 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
-public/hamza.JPG
-public/homePageImgs/8.JPG
+# public/hamza.JPG
+# public/homePageImgs/8.JPG
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

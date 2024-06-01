@@ -3,46 +3,11 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import SmoothScroll from "smooth-scroll";
+import ScrollTopBtn from "../SmoothScroll";
 
 const IntermediateDegreeComponent = () => {
   const [intermediate, setIntermediate] = useState([]);
   const [selectedDegree, setSelectedDegree] = useState(null);
-  useEffect(() => {
-    // Initialize SmoothScroll
-    // eslint-disable-next-line no-unused-vars
-    const scroll = new SmoothScroll('a[href*="#"]', {
-      speed: 800,
-      easing: "easeInOutCubic",
-    });
-
-    // Show/Hide Scroll to Top button based on scroll position
-    const scrollFunction = () => {
-      const btn = document.getElementById("myBtn");
-      if (btn) {
-        if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
-        ) {
-          btn.style.display = "block";
-        } else {
-          btn.style.display = "none";
-        }
-      }
-    };
-
-    window.addEventListener("scroll", scrollFunction);
-
-    return () => {
-      // Cleanup event listener
-      window.removeEventListener("scroll", scrollFunction);
-    };
-  }, []);
-
-  // Scroll to Top function
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   useEffect(() => {
     axios
@@ -61,9 +26,8 @@ const IntermediateDegreeComponent = () => {
   };
 
   return (
-    <div className=" mt-5">
-      <br />
-      <h1>Intermediate Degree Programs and Higher Education</h1>
+    <div className="mt-5">
+      <h1>Degree Programs for Bachelors</h1>
       <div className="mt-4">
         <div className="dropdown">
           {intermediate.map((degree, index) => (
@@ -95,14 +59,7 @@ const IntermediateDegreeComponent = () => {
           ))}
         </div>
       </div>
-      <button
-        onClick={scrollToTop}
-        id="myBtn"
-        title="Go to top"
-        style={{ display: "none" }}
-      >
-        <i className="fa-solid fa-arrow-up"></i>
-      </button>
+      <ScrollTopBtn />;
     </div>
   );
 };

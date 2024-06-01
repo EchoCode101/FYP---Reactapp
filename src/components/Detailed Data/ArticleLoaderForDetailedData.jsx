@@ -16,7 +16,7 @@ const ArticleLoader = ({ setProgress }) => {
       setProgress(20);
       try {
         const response = await fetch(
-          `http://localhost:8080/api/uni/AllUniversities/simpleData/${id}`
+          `http://localhost:8080/api/uni/AllUniversities/detailedDataAll/${id}`
         );
         setProgress(50);
         if (response.status !== 200) {
